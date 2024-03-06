@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import User from '../models/User';
+import User from "../models/user.ts";
 import jwt from 'jsonwebtoken';
 import { validationResult } from 'express-validator';
 
