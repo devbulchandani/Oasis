@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { validationResult } from "express-validator"
-import User from "../models/user.ts";
+import User from "../models/user";
 import bcrypt from "bcryptjs"
 import jwt from 'jsonwebtoken';
 
