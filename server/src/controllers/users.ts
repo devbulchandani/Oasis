@@ -13,7 +13,7 @@ export const register = async (req: Request, res: Response) => {
     try {
         let user = await User.findOne({
             email: req.body.email,
-        });
+        }); 
         console.log("Request body: ", req.body)
 
         if (user) {

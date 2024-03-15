@@ -7,7 +7,7 @@ import { AppContextProvider } from './contexts/AppContexts.tsx'
 
 
 const queryClient = new QueryClient({
-  defaultOptions: {
+  defaultOptions: { 
     queries: {
       retry: 0,
     },
