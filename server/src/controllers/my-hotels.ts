@@ -1,7 +1,8 @@
 import { Request, Response } from "express"
 import User from "../models/user";
 import cloudinary from 'cloudinary';
-import Hotel, { HotelType } from "../models/hotel";
+import Hotel from "../models/hotel";
+import { HotelType } from "../shared/type";
 
 export const addHotel = async (req: Request, res: Response) => {
     console.log("addHotel function called")
@@ -43,3 +44,15 @@ export const addHotel = async (req: Request, res: Response) => {
         res.status(500).json({ message: "Something went wrong" });
     }
 };
+
+export const myHotels = async (req: Request, res: Response) => {
+    try {
+        const hotels = await Hotel.find({
+            userId: req.userId
+        })
+        res.json(hotels)
+    } catch (err) {
+        console.log("Error fetching hotel:", err);
+        res.status(500).json({ message: "Error fetching Hotels"})
+    }
+}
