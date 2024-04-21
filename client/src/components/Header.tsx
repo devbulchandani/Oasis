@@ -4,7 +4,7 @@ import SignOutButton from "./SignOutButton";
 
 
 const Header = () => {
-    const { isLoogedIn } = useAppContext();
+    const { isLoggedIn } = useAppContext();
     return (
         <div className="bg-blue-800 py-6 ">
             {/* Header Container  */}
@@ -20,7 +20,7 @@ const Header = () => {
 
                 {/* Sign In Span Button */}
                 <span className="flex space-x-2">
-                    {isLoogedIn ? (
+                    {isLoggedIn ? (
                         <>
                             <Link className="flex items-center 
                                 text-white px-3 

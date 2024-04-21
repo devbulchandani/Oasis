@@ -1,4 +1,4 @@
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 
 export const newHotelValidator = [
     body("name").notEmpty().withMessage("Name is required"),
@@ -8,4 +8,8 @@ export const newHotelValidator = [
     body("type").notEmpty().withMessage("Hotel Type is required"),
     body("pricePerNight").notEmpty().isNumeric().withMessage("Price per night is required and must be a number"),
     body("facilities").notEmpty().isArray().withMessage("Facilities is required"),
+]
+
+export const getHotelIdValidator = [
+    param("id").notEmpty().withMessage("Hotel ID is required"),
 ]
