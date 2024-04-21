@@ -12,7 +12,6 @@ const upload = multer({
     }
 })
 
-
 const router = express.Router();
 
 //api/my-hotels

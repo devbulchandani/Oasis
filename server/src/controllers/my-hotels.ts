@@ -9,26 +9,26 @@ export const addHotel = async (req: Request, res: Response) => {
     try {
         const pictures = req.files as Express.Multer.File[];
         const newHotel: HotelType = req.body;
-        console.log("Request collected")
+        // console.log("Request collected")
 
         // Upload images concurrently
-        console.log("Cloudinary upload started....")
+        // console.log("Cloudinary upload started....")
         const imageUrls = await uploadImages(pictures);
 
         // Add image URLs to new Hotel
         newHotel.imageUrls = imageUrls;
         newHotel.lastUpdated = new Date();
         newHotel.userId = req.userId;
-        console.log("new Hotel Created")
+        // console.log("new Hotel Created")
 
         // Save new hotel in our database
         const hotel = new Hotel(newHotel);
         await hotel.save();
-        console.log("New Hotel Saved")
+        // console.log("New Hotel Saved")
         // Return success response
         res.status(201).send(hotel);
     } catch (err) {
-        console.log("Error creating hotel:", err);
+        // console.log("Error creating hotel:", err);
         // Rollback any changes if needed
         // Handle errors more accurately
         res.status(500).json({ message: "Something went wrong" });
@@ -50,7 +50,7 @@ export const myHotels = async (req: Request, res: Response) => {
 export const findHotel = async (req: Request, res: Response) => {
     const id = req.params.id.toString();
     try {
-        console.log("Request: " + req)
+        // console.log("Request: " + req)
         const hotel = await Hotel.findOne({
             _id: id,
             userId: req.userId
@@ -59,7 +59,7 @@ export const findHotel = async (req: Request, res: Response) => {
             return res.status(404).json({ message: "Hotel not found" });
         }
 
-        console.log("Retrieved hotel:", hotel); // Log the retrieved hotel
+        // console.log("Retrieved hotel:", hotel); // Log the retrieved hotel
         res.json(hotel)
     } catch (err) {
         console.log("Error editing hotel:", err);
@@ -107,11 +107,11 @@ async function uploadImages(pictures: Express.Multer.File[]) {
         const cloudinaryResponse = await cloudinary.v2.uploader.upload(dataURI);
         return cloudinaryResponse.url;
     });
-    console.log("Cloudinary upload ended");
+    // console.log("Cloudinary upload ended");
 
 
     const imageUrls = await Promise.all(uploadPromises);
-    console.log("Image urls stored");
+    // console.log("Image urls stored");
     return imageUrls;
 }
 

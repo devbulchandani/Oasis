@@ -36,8 +36,8 @@ const EditHotel = () => {
         mutate(hotelFormData)
     }
 
-    console.log("hId:", hotelId);
-    console.log("h:", hotel);
+    // console.log("hId:", hotelId);
+    // console.log("h:", hotel);
 
 
     return (

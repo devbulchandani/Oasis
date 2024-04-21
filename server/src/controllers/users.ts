@@ -5,7 +5,7 @@ import { validationResult } from 'express-validator';
 
 
 export const register = async (req: Request, res: Response) => {
-    console.log("function called")
+    // console.log("function called")
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ message: errors.array() });
@@ -14,7 +14,7 @@ export const register = async (req: Request, res: Response) => {
         let user = await User.findOne({
             email: req.body.email,
         }); 
-        console.log("Request body: ", req.body)
+        // console.log("Request body: ", req.body)
 
         if (user) {
             return res.status(400).json({ message: "User already exists" })
